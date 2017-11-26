@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126091425) do
+ActiveRecord::Schema.define(version: 20171126143441) do
+
+  create_table "parties", force: :cascade do |t|
+    t.string "title"
+    t.date "held_at"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_parties_on_user_id"
+  end
 
   create_table "user_profiles", force: :cascade do |t|
     t.string "showname"
