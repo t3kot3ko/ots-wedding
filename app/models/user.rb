@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 	has_one :user_profile
-	has_many :parties
+	has_many :participations
+	has_many :parties, through: :participations
 end
