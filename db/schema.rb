@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129150418) do
+ActiveRecord::Schema.define(version: 20171209031554) do
+
+  create_table "albums", force: :cascade do |t|
+    t.string "title"
+    t.integer "party_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["party_id"], name: "index_albums_on_party_id"
+  end
 
   create_table "participations", force: :cascade do |t|
     t.integer "user_id"
@@ -30,6 +38,15 @@ ActiveRecord::Schema.define(version: 20171129150418) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_parties_on_user_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string "url"
+    t.string "comment"
+    t.integer "album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_photos_on_album_id"
   end
 
   create_table "user_profiles", force: :cascade do |t|

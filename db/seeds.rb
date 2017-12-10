@@ -8,6 +8,16 @@
 
 password = "12345678"
 
+user = User.create(email: "user@example.com", password: password)
+profile = UserProfile.create(showname: "showname", user: user)
+
+party = Party.create(title: "party", held_at: Date.today, user: user)
+Participation.create(user: user, party: party)
+
+album = Album.create(title: "album", party: party)
+
 10.times do |i|
-	User.create(email: "user#{i}@example.com", password: password)
+	album.photos << Photo.create(url: "http://example.com/photo", )
 end
+
+
